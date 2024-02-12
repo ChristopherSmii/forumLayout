@@ -15,8 +15,9 @@ $("#newForumButton").on("click", () => {
 $("#searchForum").on("keypress", (event) => {
   if (event.key == "Enter") {
     $(".searchItem").hide();
-    searchItem = searchBar.value;
+    searchItem = "search" + searchBar.value;
     $("." + searchItem).show();
+    alert(searchItem);
     if ("search" + searchBar.value == "search") {
       $(".searchItem").show();
     }
@@ -52,7 +53,7 @@ const newPostFunction = (a, b) => {
   const formatedDate = formatter.format(now);
 
   let htmlContent = `
-  <div class="col-md-6 col-lg-3 search ${a} searchItem">
+  <div class="col-md-6 col-lg-3 search${a} searchItem">
   <div class="card"><div class="card-body">
   <h2> ${a} </h2>
   <p class="card-text"> ${b} </p>
