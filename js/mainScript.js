@@ -15,7 +15,7 @@ $("#newForumButton").on("click", () => {
 $("#searchForum").on("keypress", (event) => {
   if (event.key == "Enter") {
     $(".searchItem").hide();
-    searchItem = "search" + searchBar.value;
+    searchItem = searchBar.value;
     $("." + searchItem).show();
     if ("search" + searchBar.value == "search") {
       $(".searchItem").show();
