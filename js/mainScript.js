@@ -5,6 +5,7 @@ const newTextInput = document.getElementById("newPostText");
 let newPostTitleIn;
 let newPostTextIn;
 const now = new Date();
+
 const forumContainer = document.getElementById("mainForum");
 const pastNotes = localStorage.getItem("mainNotes");
 forumContainer.innerHTML = pastNotes;
@@ -38,20 +39,23 @@ const clearIn = () => {
 
 //new post
 const newPostFunction = (a, b) => {
-  let line1 = '<div class="col-md-6 col-lg-3 search' + a + ' searchItem">';
-  let line2 = '<div class="card"><div class="card-body">';
-  let line3 = "<h2>" + a + "</h2>";
-  let line4 = '<p class="card-text">' + b + "</p>";
-  let line5 =
-    '<h6 class="rounded-5" style="text-align:end;">' +
-    now.getDate() +
-    "/" +
-    (now.getMonth() + 1) +
-    " " +
-    now.getHours() +
-    ":" +
-    now.getMinutes() +
-    "</h6>";
-  let line6 = "</div></div></div>";
-  return line1 + line2 + line3 + line4 + line5 + line6;
+  let dateFormat = `${now.getDate()}/${
+    now.getMonth() + 1
+  } ${now.getHours()}:${now.getMinutes()}`;
+
+  const formatter = new Intl.DateTimeFormat("en-UK", {
+    day: "2-digit",
+    month: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+  const formatedDate = formatter.format(now);
+
+  let htmlContent = `
+  <div class="col-md-6 col-lg-3 search ${a} searchItem">
+  <div class="card"><div class="card-body">
+  <h2> ${a} </h2>
+  <p class="card-text"> ${b} </p>
+  <h6 class="rounded-5" style="text-align:end;"> ${formatedDate}</h6>`;
+  return htmlContent;
 };
