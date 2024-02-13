@@ -22,7 +22,7 @@
     ></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-md fixed-top bg-primary">
+    <nav class="navbar navbar-expand-md fixed-top bg-primary" id="mainNavBar">
       <div class="container">
         <a href="#" class="navbar-brand shadow px-3 rounded-5 text-light"
           ><i class="bi bi-exclamation-octagon-fill mx-2"></i>Note</a
@@ -44,10 +44,18 @@
           <i class="bi bi-plus"></i>New Note
         </button>
         <div class="btn-group">
-          <button class="btn btn-secondary" data-bs-theme-value="dark">
+          <button
+            class="btn btn-secondary"
+            id="dark-nav-colour"
+            data-bs-theme-value="dark"
+          >
             Dark
           </button>
-          <button class="btn btn-light" data-bs-theme-value="light">
+          <button
+            class="btn btn-light"
+            id="light-nav-colour"
+            data-bs-theme-value="light"
+          >
             Light
           </button>
         </div>

@@ -5,10 +5,15 @@ const newTextInput = document.getElementById("newPostText");
 let newPostTitleIn;
 let newPostTextIn;
 const now = new Date();
+let themeS = localStorage.navTheme;
+if (themeS != "light") {
+  localStorage.setItem("navTheme", "dark");
+}
 
 const forumContainer = document.getElementById("mainForum");
 const pastNotes = localStorage.getItem("mainNotes");
 forumContainer.innerHTML = pastNotes;
+
 $("#newForumButton").on("click", () => {
   document.querySelector("#newForum").classList.toggle("d-none");
 });
@@ -59,3 +64,27 @@ const newPostFunction = (a, b) => {
   <h6 class="rounded-5" style="text-align:end;"> ${formatedDate}</h6>`;
   return htmlContent;
 };
+const pastThemeColourFunction = (a) => {
+  if (a == "dark") {
+    $("#mainNavBar").removeClass("bg-primary");
+    $("#mainNavBar").addClass("bg-danger");
+  } else {
+    $("#mainNavBar").addClass("bg-primary");
+    $("#mainNavBar").removeClass("bg-danger");
+  }
+};
+
+$("#dark-nav-colour").on("click", function () {
+  pastThemeColourFunction("dark");
+  localStorage.navTheme = "dark";
+});
+if (localStorage.navTheme) {
+  pastThemeColourFunction(localStorage.navTheme);
+}
+$("#light-nav-colour").on("click", function () {
+  pastThemeColourFunction("light");
+  localStorage.navTheme = "light";
+});
+if (localStorage.navTheme) {
+  pastThemeColourFunction(localStorage.navTheme);
+}
