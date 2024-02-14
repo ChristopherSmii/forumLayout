@@ -41,6 +41,7 @@ const clearIn = () => {
   newPostTitleIn = null;
   newPostTextIn = null;
   localStorage.setItem("mainNotes", forumContainer.innerHTML);
+  pastThemeColourFunction(localStorage.navTheme);
 };
 
 //new post
