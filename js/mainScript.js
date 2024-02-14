@@ -32,7 +32,7 @@ $("#postForumButton").on("click", () => {
   newPostTextIn = newTextInput.value;
   forumContainer.innerHTML =
     forumContainer.innerHTML + newPostFunction(newPostTitleIn, newPostTextIn);
-  localStorage.setItem("mainNotes", forumContainer.innerHTML);
+  
   clearIn();
 });
 
@@ -40,6 +40,7 @@ $("#postForumButton").on("click", () => {
 const clearIn = () => {
   newPostTitleIn = null;
   newPostTextIn = null;
+  localStorage.setItem("mainNotes", forumContainer.innerHTML);
 };
 
 //new post
@@ -58,12 +59,16 @@ const newPostFunction = (a, b) => {
 
   let htmlContent = `
   <div class="col-md-6 col-lg-3 search${a} searchItem">
-  <div class="card"><div class="card-body">
-  <h2> ${a} </h2>
+  <div class="card">
+  
+  <div class="card-body">
+  <h2 class="card-title"> ${a} </h2>
   <p class="card-text"> ${b} </p>
-  <h6 class="rounded-5" style="text-align:end;"> ${formatedDate}</h6>`;
+  <button class='btn shadow rounded-5 btn-danger my-2 deleteBTN'>Delete</button>
+  <div class="rounded-5 card-footer" style="text-align:end;"> ${formatedDate}</div>`;
   return htmlContent;
 };
+//theme
 const pastThemeColourFunction = (a) => {
   if (a == "dark") {
     $("#mainNavBar").removeClass("bg-primary");
@@ -88,3 +93,11 @@ $("#light-nav-colour").on("click", function () {
 if (localStorage.navTheme) {
   pastThemeColourFunction(localStorage.navTheme);
 }
+
+$('.deleteBTN').on('click', function () {
+  let offset = $(this).offsetParent();
+  offset.parent().addClass('d-none');
+  let top = offset.top;
+  let left = offset.left;
+  clearIn();
+});
