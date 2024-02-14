@@ -73,9 +73,13 @@ const pastThemeColourFunction = (a) => {
   if (a == "dark") {
     $("#mainNavBar").removeClass("bg-primary");
     $("#mainNavBar").addClass("bg-danger");
+    $('.deleteBTN').removeClass("btn-primary");
+    $('.deleteBTN').addClass("btn-danger");
   } else {
     $("#mainNavBar").addClass("bg-primary");
     $("#mainNavBar").removeClass("bg-danger");
+    $(".deleteBTN").addClass("btn-primary");
+    $(".deleteBTN").removeClass("btn-danger");
   }
 };
 
